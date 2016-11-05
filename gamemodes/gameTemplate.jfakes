@@ -1,0 +1,14 @@
+var GT = require("../Games.js");
+var gs = require('../game.js');
+function <id>(_gn,_gd){
+	GT.GameMode.apply(this, Array.prototype.slice.call(arguments));
+	this.GameType = id;
+	this.onConnect = function(Pl){};
+	this.onDisconnect = function(Pl){};
+	this.onDraw = function(pID){return "~";};
+	this.onUpdate = function(Pl){};
+	this.onTick = function(){};
+	this.onDrawScoreBoard = function(Pl,xoff,yoff){return "~";};
+	this.getOffset = function(Pl){return [-1,-1];};
+}
+module.exports=<id>
