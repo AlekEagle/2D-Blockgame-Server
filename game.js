@@ -60,7 +60,7 @@ function setupSocket(){
     });
 	this.socketServer.on('connection', function connection(ws, req) {
 		var origin = req.headers.origin;
-        if (origin != 'https://priv.alekeagle.tk' && origin != 'https://backend.alekeagle.tk' && origin != 'https://localhost' && origin != 'https://127.0.0.1') {
+        if (origin != 'https://priv.alekeagle.tk' && origin != 'https://alekeagle.tk' && origin != 'https://localhost' && origin != 'https://127.0.0.1') {
 			console.log(origin);
             ws.close();
             return;
