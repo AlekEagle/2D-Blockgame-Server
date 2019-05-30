@@ -98,12 +98,6 @@ function handle(data){
 			}
 		}
 		console.log("There are "+onlinePlayers+" players online");
-	}else if(data.startsWith("player")){
-		if(args.length==1){
-			
-		}else{
-			
-		}
 	}else if(data.startsWith("kick")){
 		var args = data.split(" ");
 		if(args.length<2||(typeof parseInt(args[1]) == "undefined")||(parseInt(args[1]) == "NaN")){
@@ -116,6 +110,7 @@ function handle(data){
 		}else{
 			if(gs.players[parseInt(args[1])]){
 				console.log("Player "+gs.players[parseInt(args[1])].name+"("+parseInt(args[1])+") was kicked");
+				gs.players[parseInt(args[1])].ws.send('5|You have been kicked by an Administrator.');
 				gs.players[parseInt(args[1])].ws.close();
 				if(gs.games[gs.players[parseInt(args[1])].curGame])
 					gs.games[gs.players[parseInt(args[1])].curGame].delPlayer(gs.players[parseInt(args[1])]);
@@ -215,7 +210,13 @@ function handle(data){
 		}
 		gs.players[parseInt(args[1])].x = parseInt(args[2]);
 		gs.players[parseInt(args[1])].y = parseInt(args[3]);
-	}else{
+	}else if (data.startsWith('q') || data.startsWith('quit') || data.startsWith('stop')) {
+		gs.players.forEach(p => {
+			p.send('5|Server is closing');
+			p.ws.close();
+		});
+		process.exit();
+	}else {
 		console.log("That command does not exist");
 	}
 }
@@ -235,7 +236,7 @@ var fillChar = function(data, char, fieldLength, rTL) {
 function handleP(Pl,msg){
 	command = msg.split(" ")[0];
 	if(command==="/adminroom"){
-		if(Pl.name=="jezizkrist")
+		if(Pl.name.toLowerCase()=="alekeagle")
 			Pl.createGame(new GT.adminRoom(Pl.id+" AR"));
 	}
 	else if(command==="/lobby"){
@@ -262,6 +263,8 @@ function handleP(Pl,msg){
 				}
 			}
 		}
+	}else {
+		Pl.sendChatMessage('Command not found.')
 	}
 }
 exports.handle = handle;

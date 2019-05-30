@@ -46,6 +46,7 @@ function JGL(_gn){
 		
 		drawString += "3|"+(e++)+"|5|75|375|#FF0000|#000000§125§425~";
 		drawString += "3|"+(e++)+"|1|100|395|#000000|Go^Back~";
+		drawString += "3|"+(e++)+"|1|250|20|#00FF00|Use the scroll wheel or '<' and '>' to select game~";
 		return drawString;
 	};
 	this.onKeyDown = function(pID,keyCode){

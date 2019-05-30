@@ -47,7 +47,8 @@ var Player = function(id,_name,startX, startY, _ws) {
 		if(this.beating)this.missedBeats++;else this.missedBeats=0;
 		this.tflb=new Date().getTime();
 		this.beating=true;
-		if(this.missedBeats>=4){
+		if(this.missedBeats>=10){
+			this.send('5|Kicked for too much lag.')
 			this.ws.close();
 			console.log(this.id+" Kicked for Missed Heartbeat ");
 		}

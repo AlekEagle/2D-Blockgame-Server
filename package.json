@@ -1,0 +1,23 @@
+{
+  "name": "2d-boxgame-server",
+  "version": "1.0.0",
+  "description": "README WILL BE CREATED FULLY LATER. FOR NOW JUST READ PROJECT DESCRIPTION",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaidAndFade/2D-Boxgame-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaidAndFade/2D-Boxgame-Server/issues"
+  },
+  "homepage": "https://github.com/RaidAndFade/2D-Boxgame-Server#readme",
+  "dependencies": {
+    "lz-string": "^1.4.4",
+    "ws": "^7.0.0"
+  }
+}
